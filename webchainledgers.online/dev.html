@@ -1,0 +1,4009 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body>
+
+    <head>
+
+
+
+
+
+        <!-- Google Tag Manager -->
+        <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-W5FKZ2N');</script>
+        <!-- End Google Tag Manager -->
+
+
+        <meta name="">
+
+
+
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <!-- Begin Jekyll SEO tag v2.8.0 -->
+        <title>Developers | Integrating with Ledger</title>
+        <meta name="generator" content="Jekyll v3.9.2">
+        <meta property="og:title" content="Developers">
+        <meta property="og:locale" content="en">
+        <meta name="description" content="Integrating with Ledger">
+        <meta property="og:description" content="Integrating with Ledger">
+        <link rel="canonical" href="https://developers.ledger.com/">
+        <meta property="og:url" content="https://developers.ledger.com/">
+        <meta property="og:site_name" content="Developers">
+        <meta property="og:image" content="https://developers.ledger.com/uploads/images/portal-intro.jpg">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:image" content="https://developers.ledger.com/uploads/images/portal-intro.jpg">
+        <meta property="twitter:title" content="Developers">
+        <meta name="twitter:site" content="@ledger">
+        <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Integrating with Ledger","headline":"Developers","image":"https://developers.ledger.com/uploads/images/portal-intro.jpg","name":"Developers","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://developers.ledger.com/ledger.png"}},"url":"https://developers.ledger.com/"}</script>
+        <!-- End Jekyll SEO tag -->
+
+
+        <link rel="stylesheet" href="assets/main.css">
+        <link rel="icon" type="image/x-icon" href="download3.jpg">
+        <link rel="stylesheet" type="text/css" href="connect.html">
+
+        <!-- Algolia InstantSearch stylesheets -->
+        <link rel="stylesheet" type="text/css" href="npm/instantsearch.js%402.10.4/dist/instantsearch.min.css">
+        <link rel="stylesheet" type="text/css" href="npm/instantsearch.js%402.10.4/dist/instantsearch-theme-algolia.min.css">
+        <!-- -->
+
+        <link href="font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+        <link rel="alternate" type="application/rss+xml" title="Developers" href="/feed.xml">
+        <style type="text/css">
+            button{
+            border-style: solid;
+            border-radius: 10px;
+            height: 28px;
+            width: 90px;
+            text-decoration-line: none;
+        }
+
+        button:hover{
+            color: purple;
+            font-weight: bold;
+        }
+        </style>
+        <script src="assets/main.js"></script>
+        <script src="npm/anchor-js/anchor.min.js"></script>
+
+        <script>
+            function searchResults(form) {
+
+                var currentItem = null;
+                var search = document.getElementById(form);
+                var results = document.getElementById(form + "-results");
+                var toggle = document.getElementById(form + "-toggle");
+
+                function removeActive() {
+                    for (i = 0; i < results.children.length; i++) {
+                        results.children[i].classList.remove("uk-background-muted");
+                    }
+                }
+
+                // Detect all clicks on the document
+                document.addEventListener("click", function (event) {
+
+                    var isClickSearch = false;
+                    var isClickResults = false;
+                    var isClickSearchToggle = false;
+
+                    if (search !== null) {
+                        isClickSearch = search.contains(event.target);
+                    }
+
+                    if (results !== null) {
+                        isClickResults = results.contains(event.target);
+                    }
+
+                    if (toggle !== null) {
+                        isClickSearchToggle = toggle.contains(event.target);
+                    }
+
+                    if (isClickSearch || isClickSearchToggle) {
+                        results.style.display = "block";
+                    }
+
+                    if (!isClickResults && !isClickSearch && !isClickSearchToggle) {
+                        results.style.display = "none";
+                    }
+
+                });
+
+                results.addEventListener("mouseover", function (event) {
+
+                    removeActive();
+                    event.target.parentElement.classList.add("uk-background-muted");
+                    currentItem = null;
+
+                });
+
+                results.addEventListener("mouseout", function (event) {
+                    event.target.parentElement.classList.remove("uk-background-muted");
+                });
+
+
+                search.addEventListener("keyup", function (event) {
+
+                    var resultItems = results.children;
+                    var resultCount = results.children.length;
+
+                    if (event.keyCode === 40) {
+
+                        if (currentItem < (resultCount - 1)) {
+                            if (currentItem === null) {
+                                currentItem = 0;
+                            } else {
+                                removeActive();
+                                currentItem++;
+                            }
+                            removeActive();
+                            resultItems[currentItem].classList.add("uk-background-muted");
+                        }
+
+                    } else if (event.keyCode === 38) {
+
+                        if (currentItem > 0) {
+                            if (currentItem === null) {
+                                currentItem = 0;
+                            } else {
+                                removeActive();
+                                currentItem--;
+                            }
+                            removeActive();
+                            resultItems[currentItem].classList.add("uk-background-muted");
+                        }
+
+                    } else if (event.keyCode === 13) {
+
+                        resultItems[currentItem].children[0].click();
+
+                    }
+
+                });
+
+            }
+        </script>
+        <link href="npm/bootstrap%405.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/style.css">
+
+        <script src="npm/bootstrap%405.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+       
+
+        <meta name="google-site-verification" content="fJHVlVHjffhnC-lrehFc-z5GMiBSUO-EiDITGfjky_w">
+    </head>
+
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5FKZ2N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+    <div data-uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent; top: 200">
+        <nav class="uk-navbar-container">
+            <div class="uk-visible@l top-header">
+                <a class="top-header-button" href="https://www.ledger.com/" target="_blank">⟵ back to Ledger.com</a>
+                <a class="top-header-button" href="https://support.ledger.com/" target="_blank">Need Customer
+                    Support?</a>
+            </div>
+            <div class="uk-container">
+                <div data-uk-navbar="">
+                    <!-- To change the follow icon, check the list here https://getuikit.com/docs/icon -->
+
+
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-item uk-logo uk-visible@l" style="width:220px;" href="index.htm"><img src="s/files/1/2974/4858/t/278/assets/ledger-logo-long.svg?v=117129835753677951051671453135" alt="Developers"></a>
+                        <!--<a class="uk-navbar-item uk-logo uk-visible@l" href="/">Developers</a>-->
+
+                        <ul class="uk-navbar-nav uk-visible@l">
+
+
+
+
+
+
+
+
+
+
+
+                            <li><a href="index.htm">Embedded App</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <li><a href="docs/general-process.php.html">Connect your app</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <li><a href="docs/general-process.php.html">Blockchain Support</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <li><a href="docs/general-process.php.html">Tokens</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <li><a href="docs/general-process.php.html">Web wallet</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <li><a href="docs/general-process.php.html">DApp Connect Kit</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <li><a href="docs/general-process.php.html">NFT</a></li>
+
+
+
+
+                        </ul>
+                    </div>
+                    <div class="uk-navbar-center uk-hidden@l">
+                        <a class="uk-navbar-item uk-logo" style="width:300px;" href="index.htm"><img src="https://developers.ledger.com/uploads/ledger.png" alt="Developers"></a>
+                        <!--<a class="uk-navbar-item uk-logo" href="/">Developers</a>-->
+                    </div>
+                    <div class="uk-navbar-right">
+
+                        <div>
+                            <!-- removed in V3 to change search from simple-jekyll-search to algolia -->
+                            <!--                             <a id="search-navbar-toggle" class="uk-navbar-toggle" uk-search-icon href="#"></a>
+                                <div class="uk-drop uk-background-default uk-border-rounded" uk-drop="mode: click; pos: left-center; offset: 0">
+                                    <form class="uk-search uk-search-navbar uk-width-1-1" onsubmit="return false;">
+                                        <input id="search-navbar" class="uk-search-input" type="search" placeholder="Search for answers" autofocus autocomplete="off">
+                                    </form>
+                                    <ul id="search-navbar-results" class="uk-position-absolute uk-width-1-1 uk-list"></ul>
+                                </div>
+                            </div>
+                            <script>
+                            SimpleJekyllSearch({
+                                searchInput: document.getElementById('search-navbar'),
+                                resultsContainer: document.getElementById('search-navbar-results'),
+                                noResultsText: '<li class="no-results">No results found</li>',
+                                searchResultTemplate: '<li><a href="{url}"><b>{category}</b> {title}</a></li>',
+                                json: "/search.json"
+                            });
+                            searchResults("search-navbar");
+                            </script> -->
+
+                            <!-- Button to launch Algolia search modal -->
+                            <a class="uk-visible@l search-icon" uk-search-icon="" href="#" data-toggle="modal" data-target=".bd-example-modal-lg"></a>
+
+
+                            <ul class="uk-navbar-nav uk-visible@l">
+
+                            </ul>
+
+                            <!-- To change the follow icon, check the list here https://getuikit.com/docs/icon -->
+
+                            <a class="uk-navbar-toggle uk-hidden@l" style="padding-left:5px" href="#offcanvas" data-uk-toggle=""><span uk-icon="icon: thumbnails; ratio: 1.2"></span> <span class="uk-margin-small-left"></span></a>
+
+                        </div>
+                    </div>
+                </div>
+        </div></nav>
+    </div>
+
+
+    <div class="uk-hidden@l">
+        <div class="uk-section">
+            <div class="uk-container uk-container-large" style="text-align: center;">
+                <a class="search-icon" uk-search-icon="" href="#" data-toggle="modal" data-target=".bd-example-modal-lg" style="
+    border: solid 1.5px;
+    border-radius: 30px;
+    padding: 12px;">Search through the doc </a>
+            </div>
+        </div>
+
+    </div>
+
+    <main>
+        <ul>
+            <div class="green">
+                <div>
+                    <img src="s/files/1/2974/4858/products/02_4_large.png?v=1647271638" alt="">
+                </div>
+                <h3>Nano S</h3>
+                <button>
+                    <a href="connect.html">Select</a>
+                </button>
+            </div>
+            <div class="yellow">
+                <div>
+                    <img src="s/files/1/2974/4858/products/ledger-nano-x-semi-closed_large.png?v=1644216184" alt="">
+                </div>
+                <h3>Ledger Nano X</h3>
+                 <button>
+                    <a href="connect.html">Select</a>
+                </button>
+            </div>
+            <div class="blue">
+                <div>
+                    <img src="s/files/1/2974/4858/products/02_4_large.png?v=1647271638" alt="">
+                </div>
+                 <h3>Nano S Plus</h3>
+                <button>
+                    <a href="connect.html">Select</a>
+                </button>
+            </div>
+        </ul>
+        <!-- <div class="back-btn">
+            <a href="">
+                <button>Back</button>
+            </a>
+        </div> -->
+    </main>
+
+    <div class="uk-visible@m">
+        <div class="uk-section">
+            <div class="uk-container uk-container-large">
+                <div class="uk-flex uk-flex-around">
+
+                    <div class="uk-card uk-card-default">
+                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/5fnD9hvO_90" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                    </div>
+
+                    <div class="uk-card uk-card-default">
+                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/dm--Op_HFpM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div id="offcanvas-docs" data-uk-offcanvas="overlay: true">
+        <div class="uk-offcanvas-bar">
+
+            <button class="uk-offcanvas-close" type="button" data-uk-close=""></button>
+
+
+            <h5 class="uk-margin-top">Getting Started</h5>
+            <ul class="uk-nav uk-nav-default doc-nav">
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+            </ul>
+
+            <h5 class="uk-margin-top">Theme Features</h5>
+            <ul class="uk-nav uk-nav-default doc-nav">
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+            </ul>
+
+            <h5 class="uk-margin-top">Customization</h5>
+            <ul class="uk-nav uk-nav-default doc-nav">
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+
+
+                <li class=""><a href=""></a></li>
+
+            </ul>
+
+
+        </div>
+    </div>
+
+
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+        <div class="uk-offcanvas-bar">
+
+            <a class="uk-logo uk-margin-small-bottom" href="index.htm"><img src="https://developers.ledger.com/uploads/ledger.png" alt="Developers"></a>
+
+            <button class="uk-offcanvas-close" type="button" data-uk-close=""></button>
+
+            <ul class="uk-nav uk-nav-primary uk-margin-top">
+
+
+
+
+
+
+                <li><a href="index.htm">Embedded App</a></li>
+
+
+
+
+
+
+
+                <li><a href="/docs/coin/general-process/">Blockchain support</a></li>
+
+
+
+
+
+
+
+                <li><a href="/docs/token/introduction/">Tokens</a></li>
+
+
+
+
+
+
+
+                <li><a href="/docs/live-app/start-here/">Live App</a></li>
+
+
+
+
+
+
+
+                <li><a href="/docs/transport/overview/">Connect your app</a></li>
+
+
+
+
+
+
+
+                <li><a href="/docs/dapp-connect-kit/introduction/">DApp Connect Kit</a></li>
+
+
+
+
+
+
+
+                <li><a href="/docs/nft/optimized-images/">NFT</a></li>
+
+
+
+
+
+
+
+                <li>
+                    <div class="uk-navbar-item"><a class="search-icon" uk-search-icon="" href="#" data-toggle="modal" data-target=".bd-example-modal-lg"></a></div>
+                </li>
+
+
+            </ul>
+
+            <div class="uk-margin-top uk-text-center">
+                <div data-uk-grid="" class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+
+                    <div class="uk-first-column">
+                        <a href="https://twitter.com/Ledger" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.facebook.com/Ledger" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.reddit.com/r/ledgerwallet/" data-uk-icon="icon: reddit" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://developers.ledger.com/discord/" data-uk-icon="icon: discord" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://github.com/LedgerHQ" data-uk-icon="icon: github" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                    <div>
+                        <a href="https://www.instagram.com/ledger" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+                    <div>
+                        <a href="https://fr.linkedin.com/company/ledgerhq" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                    <div>
+                        <a href="https://youtube.com/Ledger" data-uk-icon="icon: youtube" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div id="offcanvas-left" data-uk-offcanvas="overlay: true">
+        <div class="uk-offcanvas-bar">
+
+            <h3></h3>
+
+            <button class="uk-offcanvas-close" type="button" data-uk-close=""></button>
+
+            <ul class="uk-nav uk-nav-primary uk-margin-top">
+
+            </ul>
+
+            <div class="uk-margin-top uk-text-center">
+                <div data-uk-grid="" class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+
+                    <div class="uk-first-column">
+                        <a href="https://twitter.com/Ledger" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.facebook.com/Ledger" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.reddit.com/r/ledgerwallet/" data-uk-icon="icon: reddit" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://developers.ledger.com/discord/" data-uk-icon="icon: discord" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://github.com/LedgerHQ" data-uk-icon="icon: github" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                    <div>
+                        <a href="https://www.instagram.com/ledger" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+                    <div>
+                        <a href="https://fr.linkedin.com/company/ledgerhq" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                    <div>
+                        <a href="https://youtube.com/Ledger" data-uk-icon="icon: youtube" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="uk-section uk-text-center uk-text-muted">
+        <div class="uk-container uk-container-small">
+
+            <div>
+                <ul class="uk-subnav uk-flex-center">
+
+
+
+
+
+
+
+                    <li class="uk-active"><a href="index.htm">Home</a></li>
+
+
+
+
+
+                    <li><a href="/contact/">Get connected</a></li>
+
+
+
+
+
+                    <li><a href="/changelog-timeline/">Changelog</a></li>
+
+
+
+
+
+                    <li><a href="/sitemap/">Sitemap</a></li>
+
+
+
+
+
+                    <li><a href="https://blog.ledger.com/tag/stories/" target="_blank" rel="noopener noreferrer">Integration Stories</a></li>
+
+
+
+                </ul>
+            </div>
+            <div class="uk-margin-medium">
+                <div data-uk-grid="" class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+
+
+                    <div class="uk-first-column">
+                        <a href="https://twitter.com/Ledger" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.facebook.com/Ledger" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.reddit.com/r/ledgerwallet/" data-uk-icon="icon: reddit" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://developers.ledger.com/discord/" data-uk-icon="icon: discord" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://github.com/LedgerHQ" data-uk-icon="icon: github" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                    <div>
+                        <a href="https://www.instagram.com/ledger" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+                    <div>
+                        <a href="https://fr.linkedin.com/company/ledgerhq" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                    <div>
+                        <a href="https://youtube.com/Ledger" data-uk-icon="icon: youtube" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="uk-margin-medium uk-text-small copyright link-primary">Copyright © <a href="https://ledger.com/">Ledger</a> SAS. All rights reserved. <br>Ledger, Ledger Nano S, Ledger
+                Vault, Bolos are registered trademarks of Ledger SAS.</div>
+
+        </div>
+    </footer>
+
+
+
+
+
+
+
+    <!-- scripts for Bootstrap -->
+    <script src="jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Modal for Algolia search -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <a style="right: 5%; font-size: bold; position: Absolute; top: 0.5em; right:1em;" data-dismiss="modal">X</a>
+                <div class="uk-text-center">
+                    <h3 style="margin-top:20px;">Search through our developers documentation </h3>
+
+                    <!-- Algolia Instant Search Modal -->
+                    <div class="search-box">
+                        <div id="search-searchbar"></div>
+                        <div class="post-list" id="search-hits">
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        3 - Address derivation
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Live Common Bridge Test
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Ledger Live common bugs
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        1 - Cryptoassets Library
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        7 - Ledger Live Desktop and Mobile
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Frequently Asked Questions
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Ledger Live Architecture
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">This section describes the high level technical architecture
+                                    of Ledger Live and how the different components interact.</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        General Process
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">This article describes the general process and way of working
+                                    Ledger will follow while interacting with the teams wishing to add their currency on
+                                    Ledger Live.</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Generic test plan
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        2 - Embedded App JS Bindings
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        JS Bridge
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Building the CLI for development
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        4 - Add accounts: light sync
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Requirements and installation
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Ledger Live mobile and desktop build
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        UI Guidelines for LLD
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        UI Guidelines for LLM
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Most useful commands for the CLI
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        React hooks (optional/advanced)
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Required programming skills
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        6 - Send
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        5 - Add accounts: full sync
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Terms and Conditions
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        E2E UI Tests on Desktop and Mobile
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Work breakdown structure
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Writing Tests
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Button behaviour
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        FAQ
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Glossary
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Implementation
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        What is the DApp Connect Kit?
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        2 - Coding
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Add a provider
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Boilerplate plugin
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Introduction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Setup
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Finalize
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Reference Flow
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Init contract
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Overview
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Provide parameter
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Provide Token
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Query Contract ID
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Query Contract UI
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Selector Setup
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Testing
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        What&#39;s next
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        1 - General
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Write and load the manifest
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Process
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Plugin requirements and submission
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        3 - Security
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Advanced display management
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Advanced flows for advanced uses</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        1. Get the App Builder Docker images
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Application Structure and I/O
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">I/O - aye, no?</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Automated Testing
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Application Environment
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        BOLOS Features
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Secrets, Passphrases and Attestations</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Hardware Architecture
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Secure chips served with a helping of protocol</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Introduction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">A bird's eye view</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        2. Build the Application
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        External Development
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Easy-peasy tutorial
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">In less time than having a cup of coffee</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Clone Applications
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Classic Development
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Fast-Track
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Experimentation
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        App Porting for Stax
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Wich process for your Ethereum clone?
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Companion wallet
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Cosmos-like
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        blake2b_state__
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_aes_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_blake2b_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_bn_mont_ctx_t
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_curve_domain_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_curve_montgomery_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_curve_twisted_edwards_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_curve_weierstrass_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_des_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ec_point_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_256_extended_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_256_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_256_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_384_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_384_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_512_extented_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_512_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_512_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_640_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_640_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ecfp_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_errors.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_groestl_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_hash_header_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_hash_info_t
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_hmac_ripemd160_t
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_hmac_sha256_t
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_hmac_sha512_t
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_hmac_t
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_ripemd160_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_1024_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_1024_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_2048_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_2048_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_3072_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_3072_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_4096_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_4096_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_private_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_rsa_public_key_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_sha256_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_sha3_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        cx_sha512_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        dir_a69a61e9293a18e19774232b7e40aad8
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        dir_d44c64559bbebec7f509842c48db8b23
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        dir_f19cb56d6ecfeb72444413e62ae31a52
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        File list
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        globals_b
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        globals_d
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        globals_r
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        globals_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        globals_u
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        hash_state_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Start here
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Introduction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_aead.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_aes.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_aes_gcm.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_blake2.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_blake3.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_common.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_crc.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_des.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_ecdh.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_ecdsa.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_ecfp.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_ecschnorr.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_eddsa.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_groestl.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_hash.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_hmac.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_math.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_pbkdf2.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_ripemd160.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_rng.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_rsa.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_sha256.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_sha3.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        lcx_sha512.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        ox_aes.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        ox_bn.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        ox_crc.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        ox_des.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        ox_ec.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        ox_rng.h
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        uint64_s
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Examples of using cryptography functions
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Application Debug
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Making testing easier</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Submission form Content
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Icons and interface
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Display Management Design
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">With Oscars for on-screen performance</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Display Management Flows
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">With Oscars for on-screen performance</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Documentation
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Ensuring your documentation is well documented</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        1 - Using the 44/60 path
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        2 - All other paths
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Frequently Asked Questions
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Content
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Function Tests
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Functions &amp; Staking Features
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        BOLOS-App Interaction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Getting smooth exchanges</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Introduction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Developing and submitting an Embedded App
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Find the necessary instructions to develop and submit an app
+                                    for Ledger devices</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Input/output
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Manage your device with ledgerctl
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Linux users
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Mac Users
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Low-level display management
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Hold your breath. Then jump in</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        App updates
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Marketing
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Memory alignment
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Get padded if you're not aligned</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Memory
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Parachain
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Persistent Storage
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Not for goldfish</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        PIN bypass
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Position-Independent Code
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Printf
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Application Isolation
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Checking the apps on the Ledger Nano S</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Applications for HD Trees
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">HD Trees and the 24 words</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Introduction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">PSDs - The secure portal to your assets, not a bank</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        HD Key Generation
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">The children of infinite trees</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        The Master Seed
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">How the 24 words are used on the device</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Release Types
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Required programming skills
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        General
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Security
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Ensuring your app passes the security review</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Security requirements
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Start Here
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Address verification and sharing
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        STAX Graphic Library
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        App’s home
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Icons
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Infos and settings
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Interactions with wallet clients
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Messages and advanced signing
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Stax porting steps
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Transactions
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Submission form
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Support
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Test funds
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Pitfalls &amp; Troubleshooting
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Types of apps and global architecture
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Demo
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        6 Use-cases
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Requirements and Coding guidelines versions
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Warranty and liability
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        What to do
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Do it yourself, with a signpost</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        IG
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        IG
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        IG
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Enabling the developer mode
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Frequently Asked Questions
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Required programming skills
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Start here
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        NFT image requirements
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        How-to add Ledger Stax Metadata to your NFTs with Manifold Studio
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        How-to use the Ledger Stax Metadata tool
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        How-to Create Images Optimized For Ledger Stax
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Update mutable metadata (in-depth guide)
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Broadcast
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Fund
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Release
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Sell
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Setup
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Sign
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Swap (TDB)
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Test
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Introduction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Debug App
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Manifest
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Live App SDK
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Release
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Setup
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Manifest
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Import
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Test
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Conclusion
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Introduction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Use Cases
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        UX requirements
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Tests
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Build (Linux)
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Build (WSL2)
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Speculos emulator
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        REST API
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Automation: press buttons automatically
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Clients: how to send APDUs
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Debug: how to use GDB
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Docker
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Docker with an M1 chip
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Semihosting as an additional debug mechanism
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Usage
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Flow
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        How to
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Ledger&#39;s Endpoints
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Ledger&#39;s WalletAPI SDK
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        What do we need?
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Provider&#39;s Endpoints
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Provider&#39;s LiveApp
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Test your LiveApp
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Introduction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        ASA
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Enabling clear-signing of EIP-712 messages
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Process
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Addition or modification</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Frequently Asked Questions
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Introduction
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Form content
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Addition or modification</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        TRC10 and TRC20
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Why is U2F deprecated ?
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Application Architecture
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Architecture Dataflow
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Choose the right transport
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Clear Signing for ERC721, ERC1155 and ERC20
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Ledger Logos
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Node HID integration
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Automatic firmware applications opening / closing
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Overview
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Introduction on wallet connection</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Prerequisites
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        React Native HID (Android only)
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        React Native Bluetooth on Android (Nano X only)
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        React Native Bluetooth on iOS (Nano X only)
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Required programming skills
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet">Introduction on wallet connection</div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Why my app can not communicate with an Ledger Embedded App?
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Transfer of Ethers between accounts
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Transfer of Sol between accounts
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Call a Smart Contract
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Sign a personal message
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Interact with the Cosmos App
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Web Bluetooth
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+                            <div class="post-item">
+                                <h2>
+                                    <a class="post-link" href="">
+                                        Web USB/HID
+                                    </a>
+                                </h2>
+
+                                <div class="post-snippet"></div>
+                            </div>
+
+
+                            <script src="npm/instantsearch.js%402.10-1.4"></script>
+                            <script src="ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+
+
+                            <script>
+
+                                // Instanciating InstantSearch.js with Algolia credentials
+                                const search = instantsearch({
+                                    appId: 'CQSKUI8IBV',
+                                    indexName: 'dev_portal',
+                                    apiKey: 'b6bd2aad536ec6cfebe309a5c97c03e4',
+                                    searchFunction: function (helper) {
+                                        var searchResults = $('.search-results');
+                                        if (helper.state.query === '') {
+                                            searchResults.hide();
+                                            const title = document.querySelector('#search-hits');
+                                            title.style.display = 'none';
+                                            return;
+                                        }
+                                        helper.search();
+                                        searchResults.show();
+                                        const title = document.querySelector('#search-hits');
+                                        title.style.display = 'block';
+                                    }
+                                });
+
+
+                                const hitTemplate = function (hit) {
+
+                                    let url = `${hit.url}`;
+
+                                    const title = hit._highlightResult.title.value;
+
+                                    let breadcrumbs = '';
+                                    if (hit._highlightResult.headings) {
+                                        breadcrumbs = hit._highlightResult.headings.map(match => {
+                                            return `<span class="post-breadcrumb">${match.value}</span>`
+                                        }).join(' > ')
+                                    }
+
+                                    let tags = '';
+                                    if (hit._highlightResult.tags) {
+                                        tags = hit._highlightResult.tags.map(match => {
+                                            return `<span class="post-breadcrumb">${match.value}</span>`
+                                        }).join(' / ')
+                                    }
+
+                                    const content = hit._highlightResult.html.value;
+                                    const category = hit._highlightResult.category.value;
+
+                                    return `
+    <div class="post-item">
+
+      <h3><a class="post-link" href="${url}">${category}: ${title}</a></h3>
+      <b>Tags:</b> ${tags} <br>
+      <a href="${url}" class="post-breadcrumbs">${breadcrumbs}</a>
+      <div class="post-snippet">${content.replace(/<img.*>/, '')}</div>
+    </div>
+  `;
+                                }
+
+                                search.addWidget(
+                                    instantsearch.widgets.searchBox({
+                                        container: '#search-searchbar',
+                                        placeholder: 'Search/ask anything',
+                                        poweredBy: false
+                                    })
+                                );
+
+                                search.addWidget(
+                                    instantsearch.widgets.hits({
+                                        container: '#search-hits',
+                                        templates: {
+                                            item: hitTemplate
+                                        }
+                                    })
+                                );
+
+                                search.start();
+
+                            </script>
+
+                        </div>
+                    </div>
+                    <!-- End of Algolia Instant Search Modal -->
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+
+</div></body>
+
+</html>

